@@ -1,0 +1,44 @@
+body {
+	width: 92%;
+	margin: 0 auto;
+	font-family: Verdana, STXihei, Microsoft YaHei, SimSun, PMingLiU;
+	font-size: 150%;
+}
+
+a:link {
+	color: #175199;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #175199;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #175199;
+	text-decoration: none;
+}
+
+a:active {
+	color: #175199;
+	text-decoration: none;
+}
+
+.logo {
+	width: 700px;
+	height: 93px;
+}
+
+.kopimi {
+	width: 38px;
+	height: 47px;
+}
+
+.screen-shot img {
+	min-width: 700px;
+}
+
+.inset-image img {
+	min-width: 800px;
+}

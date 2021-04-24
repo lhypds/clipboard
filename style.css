@@ -1,0 +1,54 @@
+body {
+	width: 39em;
+	margin: 0 auto;
+	font-family: Verdana, STXihei, Microsoft YaHei, SimSun, PMingLiU;
+	font-size: 90%;
+}
+
+a:link {
+	color: #666666;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000000;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #000000;
+	text-decoration: underline;
+}
+
+.logo {
+	width: 430px;
+	height: 54px;
+}
+
+.kopimi {
+	width: 23px;
+	height: 29px;
+}
+
+.screen-shot img {
+	max-width: 520px;
+}
+
+.kopimi {
+	width: 21px;
+	height: 27px;
+}
+
+html {
+    overflow-y:scroll;
+}
+
+#headSpace {
+	height: 6px;
+}
+
