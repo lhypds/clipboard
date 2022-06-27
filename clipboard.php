@@ -37,18 +37,28 @@ function test_input($data) {
 
 ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/cookie-utils.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
 
-<style>
+<head>
+    <title>gochaichai.com</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
     #clipboardTextarea {
         resize:none;
         width:561px;
         font-size:12.5;
         font-family:Verdana, STXihei, Microsoft YaHei, SimSun, PMingLiU;
     }
-</style>
+    </style>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/cookie-utils.js"></script>
+</head>
+
+<body>
+<br>
 <h3>✪ Submit To Clipboard<br></h3>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <textarea id="clipboardTextarea" autofocus name="clipboard" rows="12"><?php echo $clipboard; ?></textarea><br>
@@ -117,3 +127,4 @@ function test_input($data) {
   </script>
 </div>
 <br>
+</body>

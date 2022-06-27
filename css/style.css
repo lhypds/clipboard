@@ -25,23 +25,8 @@ a:active {
 	text-decoration: underline;
 }
 
-.logo {
-	width: 430px;
-	height: 54px;
-}
-
-.kopimi {
-	width: 23px;
-	height: 29px;
-}
-
 .screen-shot img {
 	max-width: 520px;
-}
-
-.kopimi {
-	width: 21px;
-	height: 27px;
 }
 
 html {
