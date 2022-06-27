@@ -1,4 +1,4 @@
-# My Clipboard
+# My Online Clipboard
 
 A small online clipboard web app.
 
