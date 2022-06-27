@@ -1,10 +1,8 @@
-<?php include("header.php"); ?>
-
 <?php
 
 $clipboard = "";
-if ($_POST["robotCheck"] || $_COOKIE["robotCheck"]) {
-    setcookie("robotCheck", true);
+if ((isset($_POST["robotCheck"]) && $_POST["robotCheck"]) || (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"])) {
+    setcookie("robotCheck", "true");
 
     if (empty($_POST["clipboard"])) {
         $clipboard = "";
@@ -40,12 +38,32 @@ function test_input($data) {
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/cookie-utils.js"></script>
+
+<style>
+    #clipboardTextarea {
+        resize:none;
+        width:561px;
+        font-size:12.5;
+        font-family:Verdana, STXihei, Microsoft YaHei, SimSun, PMingLiU;
+    }
+</style>
 
 <h3>✪ Submit To Clipboard<br></h3>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <textarea autofocus name="clipboard" rows="12" style="resize:none;width:561px"><?php echo $clipboard; ?></textarea><br>
+  <textarea id="clipboardTextarea" autofocus name="clipboard" rows="12"><?php echo $clipboard; ?></textarea><br>
   <div style="font-size:12px">
-    <input style="height:12px;flex" type="checkbox" name="robotCheck" <?php if ($_COOKIE["robotCheck"]) echo "checked"; ?>>NOT A ROBOT 🤖</input>
+    <input id="robotCheck" style="height:12px;flex" type="checkbox" name="robotCheck" <?php if (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"]) echo "checked"; ?>>I'm not a robot 🤖</input>
+    <script>
+        const checkbox = document.getElementById('robotCheck');
+        checkbox.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+                setCookie("robotCheck", true);
+            } else {
+                setCookie("robotCheck", false);
+            }
+        });
+    </script>
   </div>
   <div style="text-align:center">
     <button style="width:100px;height:30px;margin-top:6px;" type="submit">Submit</button>
@@ -99,5 +117,3 @@ function test_input($data) {
   </script>
 </div>
 <br>
-
-<?php include("footer.php"); ?>
