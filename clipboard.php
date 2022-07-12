@@ -1,3 +1,5 @@
+<?php include("header.php"); ?>
+
 <?php
 
 $clipboard = "";
@@ -37,28 +39,18 @@ function test_input($data) {
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/cookie-utils.js"></script>
 
-<head>
-    <title>gochaichai.com</title>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
+<style>
     #clipboardTextarea {
         resize:none;
         width:561px;
         font-size:12.5;
         font-family:Verdana, STXihei, Microsoft YaHei, SimSun, PMingLiU;
     }
-    </style>
+</style>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/cookie-utils.js"></script>
-</head>
-
-<body>
-<br>
 <h3>✪ Submit To Clipboard<br></h3>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <textarea id="clipboardTextarea" autofocus name="clipboard" rows="12"><?php echo $clipboard; ?></textarea><br>
@@ -101,6 +93,7 @@ function test_input($data) {
 
 <div style="text-align:center">
   <button style="width:100px;height:30px;margin-top:6px" onclick="copyToClipboard(readTextFile('clipboard.txt'))">Copy text</button>
+  <button style="width:100px;height:30px;margin-top:6px" onclick="openLink(readTextFile('clipboard.txt'))">Open link</button>
   <script>
     function copyToClipboard(text) {
         var $temp = $("<input>");
@@ -110,9 +103,14 @@ function test_input($data) {
         $temp.remove();
     }
 
+    function openLink(text) {
+        console.log("Opening link " + text);
+        window.open(text, "_blank");
+    }
+
     function readTextFile(file) {
-        var rawFile = new XMLHttpRequest();
-        var result;
+        let rawFile = new XMLHttpRequest();
+        let result;
         rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function () {
             if (rawFile.readyState === 4) {
@@ -127,4 +125,5 @@ function test_input($data) {
   </script>
 </div>
 <br>
-</body>
+
+<?php include("footer.php"); ?>
