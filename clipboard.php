@@ -68,7 +68,7 @@ function test_input($data) {
     </script>
   </div>
   <div style="text-align:center">
-    <button style="width:100px;height:30px;margin-top:6px;" type="submit">Submit</button>
+    <button id="btnSubmit" style="width:100px;height:30px;margin-top:6px;" type="submit">Submit</button>
   </div>
 </form>
 
@@ -121,6 +121,15 @@ function test_input($data) {
         }
         rawFile.send(null);
         return result;
+    }
+
+    // Ctrl + enter to submit
+    document.onkeydown = keydown;
+    function keydown(event) {
+        console.log(event)
+        if (event.ctrlKey && event.code === "Enter") {
+            document.getElementById("btnSubmit").click(); 
+        }
     }
   </script>
 </div>
