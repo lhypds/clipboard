@@ -1,6 +1,8 @@
-# My Online Clipboard
 
-A small online clipboard web app.
+Clipboard
+=========
+
+A online clipboard web app.
 
 
 Installation
