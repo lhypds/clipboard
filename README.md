@@ -5,6 +5,12 @@ Clipboard
 A online clipboard web app.
 
 
+Dependencies
+------------
+
+PHP
+
+
 Installation
 ------------
 
