@@ -62,7 +62,7 @@ function test_input($data) {
     });
   </script>
   <div style="text-align:center">
-    <button id="btnSubmit" type="submit">Submit</button>
+    <button id="btn-submit" type="submit">Submit</button>
   </div>
 </form>
 
@@ -117,9 +117,8 @@ function test_input($data) {
   // Ctrl + enter to submit
   document.onkeydown = keydown;
   function keydown(event) {
-    console.log(event)
     if (event.ctrlKey && event.code === "Enter") {
-      document.getElementById("btnSubmit").click(); 
+      document.getElementById("btn-submit").click(); 
     }
   }
   </script>
