@@ -47,81 +47,85 @@ function test_input($data) {
 </head>
 
 <body>
-<h3>Submit To Clipboard<br></h3>
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <textarea autofocus name="clipboard" rows="12"><?php echo $clipboard; ?></textarea><br>
-  <input id="robotCheck" style="height:12px;flex" type="checkbox" name="robotCheck" <?php if (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"]) echo "checked"; ?>>I'm not a robot 🤖</input>
-  <script>
-    const checkbox = document.getElementById('robotCheck');
-    checkbox.addEventListener('change', (event) => {
-      if (event.currentTarget.checked) {
-        setCookie("robotCheck", true);
-      } else {
-        setCookie("robotCheck", false);
-      }
-    });
-  </script>
-  <div style="text-align:center">
-    <button id="btn-submit" type="submit">Submit</button>
-  </div>
-</form>
-
-<h3>Clipboard<br></h3>
-<div class="clipboard">
-  <div style="margin:3px">
-  <?php
-  if ($file = fopen("clipboard.txt", "r")) {
-    while (!feof($file)) {
-      $line = fgets($file);
-      echo $line;
-      echo "<br>";
-    }
-    fclose($file);
-  }
-  ?>
-  </div>
+<div id="clipboard-input">
+  <h3>Submit To Clipboard<br></h3>
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <textarea autofocus name="clipboard" rows="12"><?php echo $clipboard; ?></textarea><br>
+    <input id="robotCheck" style="height:12px;flex" type="checkbox" name="robotCheck" <?php if (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"]) echo "checked"; ?>>I'm not a robot</input>
+    <script>
+      const checkbox = document.getElementById('robotCheck');
+      checkbox.addEventListener('change', (event) => {
+        if (event.currentTarget.checked) {
+          setCookie("robotCheck", true);
+        } else {
+          setCookie("robotCheck", false);
+        }
+      });
+    </script>
+    <div style="text-align:center">
+      <button id="btn-submit" type="submit">Submit</button>
+    </div>
+  </form>
 </div>
 
-<div style="text-align:center; margin-top:2px">
-  <button onclick="copyToClipboard(readTextFile('clipboard.txt'))">Copy text</button>
-  <button onclick="openLink(readTextFile('clipboard.txt'))">Open link</button>
-  <script>
-  function copyToClipboard(text) {
-    var $temp = $("<input>");
-    $("body").append($temp);
-    $temp.val(text).select();
-    document.execCommand("copy");
-    $temp.remove();
-  }
+<div id="clipboard-content">
+  <h3>Clipboard<br></h3>
+  <div class="clipboard">
+    <div style="margin:3px">
+    <?php
+    if ($file = fopen("clipboard.txt", "r")) {
+      while (!feof($file)) {
+        $line = fgets($file);
+        echo $line;
+        echo "<br>";
+      }
+      fclose($file);
+    }
+    ?>
+    </div>
+  </div>
 
-  function openLink(text) {
-    console.log("Opening link " + text);
-    window.open(text, "_blank");
-  }
+  <div style="text-align:center; margin-top:2px">
+    <button onclick="copyToClipboard(readTextFile('clipboard.txt'))">Copy text</button>
+    <button onclick="openLink(readTextFile('clipboard.txt'))">Open link</button>
+    <script>
+    function copyToClipboard(text) {
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val(text).select();
+      document.execCommand("copy");
+      $temp.remove();
+    }
 
-  function readTextFile(file) {
-    let rawFile = new XMLHttpRequest();
-    let result;
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function () {
-      if (rawFile.readyState === 4) {
-        if(rawFile.status === 200 || rawFile.status == 0) {
-          result = rawFile.responseText;
+    function openLink(text) {
+      console.log("Opening link " + text);
+      window.open(text, "_blank");
+    }
+
+    function readTextFile(file) {
+      let rawFile = new XMLHttpRequest();
+      let result;
+      rawFile.open("GET", file, false);
+      rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4) {
+          if(rawFile.status === 200 || rawFile.status == 0) {
+            result = rawFile.responseText;
+          }
         }
       }
+      rawFile.send(null);
+      return result;
     }
-    rawFile.send(null);
-    return result;
-  }
 
-  // Ctrl + enter to submit
-  document.onkeydown = keydown;
-  function keydown(event) {
-    if (event.ctrlKey && event.code === "Enter") {
-      document.getElementById("btn-submit").click(); 
+    // Ctrl + enter to submit
+    document.onkeydown = keydown;
+    function keydown(event) {
+      if (event.ctrlKey && event.code === "Enter") {
+        document.getElementById("btn-submit").click(); 
+      }
     }
-  }
-  </script>
+    </script>
+  </div>
 </div>
 <br>
 </body>

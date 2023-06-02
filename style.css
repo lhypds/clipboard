@@ -1,21 +1,25 @@
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 body {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
   font-family: "Fira Code VF", Helvetica, sans-serif;
   font-size: 14px;
 }
-textarea {                                               
+#clipboard-input {
+  margin-left: 10px;
+  margin-right: 13px;
+}
+textarea {
   resize: none;
-  width: 592px;
+  margin-right: 50px;
+  width: 100%;
   font-family: "Fira Code VF", Helvetica, sans-serif;
   font-size: 14px;
 }
-button {
-  width: 100px;
-  height: 30px;
-  margin-top: 8px;
-
+#clipboard-content {
+  margin-left: 10px;
+  margin-right: 5px;
 }
 .clipboard {
   font-size: 14px;
@@ -24,4 +28,9 @@ button {
   border-width: 1px;
   border-color: gray;
   line-height: 140%;
+}
+button {
+  width: 100px;
+  height: 30px;
+  margin-top: 8px;
 }
