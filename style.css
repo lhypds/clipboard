@@ -28,6 +28,8 @@ textarea {
   border-width: 1px;
   border-color: gray;
   line-height: 140%;
+  overflow-y: auto;
+  overflow-wrap: break-word;
 }
 button {
   width: 100px;
